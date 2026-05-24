@@ -6,6 +6,12 @@
 
 > Copy this template to create `SPRINT_XX_PLAN.md` before each sprint.
 > Prerequisites: [CLAUDE.md](CLAUDE.md) (project overview) and [SKILL.md](SKILL.md) (current progress) must exist first.
+>
+> **AI generation:** You can ask Claude to generate the sprint plan:
+> ```
+> Read CLAUDE.md and SKILL.md, check git log, then
+> generate SPRINT_XX_PLAN.md using SPRINT_TEMPLATE.md format.
+> ```
 
 ---
 

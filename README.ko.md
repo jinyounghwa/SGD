@@ -61,9 +61,39 @@ Sprint 계획 → Phase 분해 → 구현 → 테스트 → 커밋 → 반복
 
 ## 사이클
 
-### Sprint 계획 (30분)
+### Sprint 계획
 
-`SPRINT_XX_PLAN.md` 작성:
+두 가지 옵션이 있습니다:
+
+**옵션 A: 수동 (30분)**
+
+[템플릿](SPRINT_TEMPLATE.md)을 사용하여 직접 `SPRINT_XX_PLAN.md`를 작성합니다.
+
+**옵션 B: AI 생성 (5분)**
+
+Claude(또는 다른 AI)에게 Sprint 계획 생성을 요청합니다. 이 프롬프트를 사용하세요:
+
+```
+CLAUDE.md와 SKILL.md를 읽고:
+1. git log로 최근 커밋을 확인
+2. 테스트를 실행하여 현재 상태 확인
+3. SPRINT_TEMPLATE.md 형식으로 SPRINT_XX_PLAN.md 생성
+   적절한 Phase, 파일 목록, 테스트 목표 포함
+```
+
+AI는:
+1. CLAUDE.md 읽기 → 프로젝트가 무엇인지 이해
+2. SKILL.md 읽기 → 현재 위치 파악
+3. git log 분석 → 방금 완료된 것 확인
+4. SPRINT_XX_PLAN.md 생성 → 다음 Sprint 제안
+
+리뷰하고 조정한 후 구현을 시작합니다.
+
+> 💡 AWS Guardian이 이 방식으로 개발되었습니다 — Claude가
+> CLAUDE.md + SKILL.md + git log를 기반으로 Sprint 계획을 생성하고
+> 개발자가 이를 리뷰했습니다.
+
+### Sprint 계획 예시
 
 ```markdown
 # Sprint 1: 사용자 인증
@@ -146,8 +176,17 @@ CLAUDE.md (무엇을 만들지)
         → SPRINT_XX_PLAN.md (다음에 할 것)
             → 구현 → 테스트 → 커밋
                 → SKILL.md 업데이트
-                    → 다음 Sprint 계획
+                    → 다음 Sprint 계획 (수동 또는 AI 생성)
 ```
+
+### AI Sprint 생성
+
+CLAUDE.md + SKILL.md는 이중 목적을 가집니다:
+1. **개발자**가 프로젝트 상태를 이해하기 위해 읽음
+2. **AI**가 다음 Sprint 계획을 생성하기 위해 읽음
+
+두 문서가 모두 있어야 AI가 의미 있는 Sprint 계획을 생성할 수 있습니다.
+이것이 필수인 이유입니다.
 
 ---
 
@@ -166,22 +205,30 @@ CLAUDE.md (무엇을 만들지)
 
 ## 시작하기
 
-### 1. 템플릿 복사
-```bash
-cp SPRINT_TEMPLATE.md SPRINT_01_PLAN.md
+### 1. CLAUDE.md 작성
+프로젝트 개요를 작성합니다. 기술 스택, 아키텍처, 무엇을 만드는지.
+
+### 2. SKILL.md 작성
+진행 추적기를 설정합니다. 초기 상태: 0 테스트, 아직 Sprint 없음.
+
+### 3. 첫 Sprint 계획 생성
+
+**수동:** [SPRINT_TEMPLATE.md](SPRINT_TEMPLATE.md)를 복사하여 `SPRINT_01_PLAN.md` 작성
+
+**AI 생성:** AI에게 요청:
+```
+CLAUDE.md와 SKILL.md를 읽고.
+3-5개 Phase와 테스트 목표로 SPRINT_01_PLAN.md를 생성해.
 ```
 
-### 2. 첫 Sprint 정의
-기능을 3-5개 Phase로 나누고 테스트 목표 설정.
-
-### 3. 사이클 실행
+### 4. 사이클 실행
 ```
 각 Phase마다:
   구현 → 테스트 → 커밋
 ```
 
-### 4. 반복
-Sprint가 끝나면 다음 것을 계획.
+### 5. 반복
+Sprint가 끝나면 SKILL.md를 업데이트하고 다음 Sprint 계획을 생성합니다.
 
 ---
 

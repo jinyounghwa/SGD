@@ -6,6 +6,12 @@
 
 > 각 Sprint 시작 전 이 템플릿을 복사하여 `SPRINT_XX_PLAN.md`로 생성합니다.
 > 전제조건: [CLAUDE.md](CLAUDE.md) (프로젝트 개요)와 [SKILL.md](SKILL.md) (현재 진행)가 먼저 있어야 합니다.
+>
+> **AI 생성:** Claude에게 Sprint 계획 생성을 요청할 수 있습니다:
+> ```
+> CLAUDE.md와 SKILL.md를 읽고, git log를 확인한 후
+> SPRINT_TEMPLATE.md 형식으로 SPRINT_XX_PLAN.md를 생성해.
+> ```
 
 ---
 

@@ -61,9 +61,38 @@ Each phase is **small enough to complete in one sitting**, **verified by tests**
 
 ## The Cycle
 
-### Sprint Planning (30 min)
+### Sprint Planning
 
-Write a `SPRINT_XX_PLAN.md`:
+You have two options:
+
+**Option A: Manual (30 min)**
+
+Write a `SPRINT_XX_PLAN.md` yourself using the [template](SPRINT_TEMPLATE.md).
+
+**Option B: AI-Generated (5 min)**
+
+Ask Claude (or any AI) to generate the sprint plan. Give it this prompt:
+
+```
+Read CLAUDE.md and SKILL.md, then:
+1. Check git log for recent commits
+2. Run tests to see current status
+3. Generate SPRINT_XX_PLAN.md using SPRINT_TEMPLATE.md format
+   with appropriate phases, file lists, and test targets
+```
+
+The AI will:
+1. Read CLAUDE.md → understand what the project is
+2. Read SKILL.md → understand where you are
+3. Analyze git log → see what was just completed
+4. Generate SPRINT_XX_PLAN.md → propose the next sprint
+
+You review and adjust. Then start implementing.
+
+> 💡 This is how AWS Guardian was built — Claude generated sprint plans
+> based on CLAUDE.md + SKILL.md + git log, and the developer reviewed them.
+
+### Sprint Plan Example
 
 ```markdown
 # Sprint 1: User Authentication
@@ -146,8 +175,17 @@ CLAUDE.md (what to build)
         → SPRINT_XX_PLAN.md (what to do next)
             → Implement → Test → Commit
                 → Update SKILL.md
-                    → Plan next sprint
+                    → Plan next sprint (manual or AI-generated)
 ```
+
+### AI Sprint Generation
+
+CLAUDE.md + SKILL.md serve a dual purpose:
+1. **You** read them to understand the project state
+2. **AI** reads them to generate the next sprint plan
+
+Without both documents, the AI can't generate meaningful sprint plans.
+This is why they're required, not optional.
 
 ---
 
@@ -166,22 +204,30 @@ The project's `docs/sprints/` directory contains the actual sprint plans used du
 
 ## Getting Started
 
-### 1. Copy the template
-```bash
-cp SPRINT_TEMPLATE.md SPRINT_01_PLAN.md
+### 1. Create CLAUDE.md
+Write your project overview. Tech stack, architecture, what you're building.
+
+### 2. Create SKILL.md
+Set up the progress tracker. Initial state: 0 tests, no sprints yet.
+
+### 3. Generate your first sprint plan
+
+**Manual:** Copy [SPRINT_TEMPLATE.md](SPRINT_TEMPLATE.md) to `SPRINT_01_PLAN.md`
+
+**AI-Generated:** Ask your AI:
+```
+Read CLAUDE.md and SKILL.md.
+Generate SPRINT_01_PLAN.md with 3-5 phases and test targets.
 ```
 
-### 2. Define your first sprint
-Break your feature into 3-5 phases with test targets.
-
-### 3. Execute the cycle
+### 4. Execute the cycle
 ```
 For each phase:
   Implement → Test → Commit
 ```
 
-### 4. Repeat
-When the sprint is done, plan the next one.
+### 5. Repeat
+When the sprint is done, update SKILL.md and generate the next sprint plan.
 
 ---
 
