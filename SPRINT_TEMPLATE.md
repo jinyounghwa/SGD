@@ -1,243 +1,122 @@
-# Sprint Template (Sprint Planning Template)
+# SPRINT_TEMPLATE.md: Sprint Planning Template
 
 **English | [한국어](SPRINT_TEMPLATE.ko.md)**
 
 ---
 
-> Copy this template before each Sprint start and create `SPRINT_XX_PLAN.md`.
-> Write in detail so that AI collaborators can fully understand the context even after a session disconnection.
-> **Token-saving tip**: Keep this plan concise so the AI can grasp the context with fewer tokens.
+> Copy this template to create `SPRINT_XX_PLAN.md` before each sprint.
+> This is the only document you actually need.
 
 ---
 
-# Sprint [NUMBER]: [Sprint Title]
+# Sprint [NUMBER]: [Title]
 
-## Current Status
+## Status
 
-### Previous Sprint Completion
-- Sprint [N-1]: [Goal] ([X] tests) ✅
-- Sprint [N-2]: [Goal] ([Y] tests) ✅
-- ...
+### Previous Sprint
+- Sprint [N-1]: [goal] ([X] tests) ✅
 
-### Cumulative Progress
-- Cumulative tests so far: **XXX tests**
-- This Sprint target: **YY tests**
-- Expected cumulative: **XXX + YY = ZZZ tests**
-
-### Architecture State
-[One-line description of current system architecture]
-
-Example:
-```
-CloudTrail → DynamoDB Streams → EventBridge → Lambda
-    ↓              ↓                  ↓          ↓
- Logging      Detection        Scheduling    Execution
-```
+### Cumulative
+- Tests so far: **XXX**
+- This sprint target: **YY**
+- Expected total: **XXX + YY = ZZZ**
 
 ---
 
-## Goals
+## Phases
 
-### Sprint Topic
-**[One-sentence description]**
-
-Example: "Build an engine that monitors large projects in real-time and responds automatically"
-
-### Per-Phase Goals
-
-| Phase | Feature | Tests | Estimated Time |
-|-------|---------|-------|----------------|
-| 1 | [Feature Name] | NN tests | X hours |
-| 2 | [Feature Name] | MM tests | Y hours |
-| 3 | [Feature Name] | KK tests | Z hours |
-| 4 | [Feature Name] | LL tests | W hours |
-| **Total** | | **NN+MM+KK+LL** | **X+Y+Z+W** |
+| Phase | Feature | Tests | Time |
+|-------|---------|-------|------|
+| 1 | [Feature] | NN | Xh |
+| 2 | [Feature] | MM | Yh |
+| 3 | [Feature] | KK | Zh |
+| **Total** | | **NN+MM+KK** | **X+Y+Zh** |
 
 ---
 
-## Implementation File List
+## Implementation Files
 
-### Phase 1: [Feature Name]
+### Phase 1: [Feature]
 
-| File Path | Filename | Description | New/Modified | Lines |
-|-----------|----------|-------------|-------------|-------|
-| `lambda/guardian/handlers/` | `rule_handler.py` | Rule processing | New | ~300 |
-| `lambda/guardian/storage/` | `rule_cache.py` | Rule cache | New | ~200 |
-| `tests/backend/` | `test_rules.py` | Tests | New | ~400 |
-| **Total** | | | | ~900 |
+| Path | File | Description | New/Modified |
+|------|------|-------------|-------------|
+| `src/` | `feature.py` | Core logic | New |
+| `tests/` | `test_feature.py` | Tests | New |
 
-### Phase 2: [Feature Name]
+### Phase 2: [Feature]
+...
 
-| File Path | Filename | Description | New/Modified |
-|-----------|----------|-------------|-------------|
-| ... | ... | ... | ... |
-
-### Phase 3: [Feature Name]
-
+### Phase 3: [Feature]
 ...
 
 ---
 
-## Implementation Strategy
+## Strategy
 
-### Phase 1: [Feature Name] (NN tests)
+### Phase 1: [Feature] (NN tests)
 
 #### Goal
-[Specific Phase goal, 3-4 lines]
+[What this phase accomplishes]
 
-#### Core Concepts
+#### Core Concept
 ```python
-class [CoreClass]:
-    def [core_method](self):
-        """[Method's role]"""
-        # Step 1: [Description]
-        # Step 2: [Description]
-        # Step 3: [Description]
+class CoreClass:
+    def core_method(self):
+        # Step 1: ...
+        # Step 2: ...
         return result
 ```
 
-#### Test Strategy
-- **Test Group 1**: [Test category] (X tests)
-  - test_feature_basic
-  - test_feature_with_edge_case
-  - ...
+#### Test Plan
+- Test Group 1: [category] (X tests)
+- Test Group 2: [category] (Y tests)
 
-- **Test Group 2**: [Test category] (Y tests)
-  - test_performance
-  - test_error_handling
-  - ...
-
-#### Expected Issues & Solutions
-| Potential Issue | Solution |
-|----------------|----------|
-| [Issue] | [Solution] |
-| Example: Memory shortage | Batch processing optimization |
-
-#### Completion Criteria
-- [ ] [File 1] implementation complete
-- [ ] [File 2] implementation complete
-- [ ] All NN tests PASS
-- [ ] Git commit complete
-
----
-
-### Phase 2: [Feature Name] (MM tests)
-
-#### Goal
-[...]
-
-#### Core Concepts
-[...]
-
----
-
-## Tech Stack
-
-| Layer | Technology |
+#### Risks
+| Issue | Mitigation |
 |-------|-----------|
-| **Runtime** | Python 3.12 |
-| **Framework** | boto3, asyncio |
-| **Data Storage** | DynamoDB |
-| **Testing** | pytest |
-| **Deployment** | AWS SAM |
+| [Risk] | [Solution] |
+
+#### Done When
+- [ ] Implementation complete
+- [ ] NN tests PASS
+- [ ] Committed
 
 ---
 
-## Success Criteria
-
-### Quantitative
-- [ ] All NN+MM+KK+LL = ZZZ tests PASS
-- [ ] Code lines: ~XXXX lines added
-- [ ] Coverage: >90%
-
-### Qualitative
-- [ ] Architecture consistency maintained
-- [ ] Sufficient documentation
-- [ ] Team member review passed (if applicable)
-
----
-
-## Dependencies & Prerequisites
-
-### External Dependencies
-- AWS account with appropriate IAM permissions
-- DynamoDB table `SecurityRulesTable`
-- EventBridge rule configured
-
-### Prerequisite Completion
-- [X] [Previous Sprint] complete
-- [X] [Required libraries] installed
-- [X] [Required configuration] done
-
----
-
-## Risk Factors & Mitigation Plan
-
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|-----------|------------|
-| [Risk factor] | High | Medium | [Mitigation plan] |
-| Example: Dependency version conflict | High | Low | Pre-testing |
+### Phase 2: [Feature] (MM tests)
+...
 
 ---
 
 ## Commit Message Template
 
-Commit in the following format upon each Phase completion:
-
 ```
-feat: Sprint [N] Phase [M] - [Feature Title] ([X] tests)
+feat: Sprint [N] Phase [M] - [Title] ([X] tests)
 
-[One-line description]
-
-Components:
-- Feature A: [Description]
-- Feature B: [Description]
-
-Test Coverage:
-- Test Group 1: X tests
-- Test Group 2: Y tests
-
-Performance Metrics:
-- Metric 1: value
-- Metric 2: value
+[Description]
 
 Cumulative: [prev] + [new] = [total] tests
-
-Co-Authored-By: [Your Name] <noreply@[domain]>
 ```
 
 ---
 
-## References
+## Checklist
 
-- [CLAUDE.md](CLAUDE.md) / [CLAUDE.ko.md](CLAUDE.ko.md) - Project overview
-- [SKILL.md](SKILL.md) / [SKILL.ko.md](SKILL.ko.md) - Meta progress
-- [README.md](README.md) / [README.ko.md](README.ko.md) - SGD methodology
-- [../README.md](../README.md) - AWS Guardian README
+### Before Starting
+- [ ] Plan created (this file)
+- [ ] Phases defined with test targets
 
----
+### Each Phase
+- [ ] Implementation done
+- [ ] Tests written and passing
+- [ ] Committed
 
-## Execution Checklist
-
-### Planning Stage (1 hour)
-- [ ] Copy this template and create `SPRINT_XX_PLAN.md`
-- [ ] Define per-Phase goals
-- [ ] Write file list
-- [ ] Establish test strategy
-
-### Phase Implementation (2-4 hours per Phase)
-- [ ] Implement core classes
-- [ ] Write comprehensive tests
-- [ ] Verify all tests PASS
-- [ ] Perform Git commit
-
-### Sprint Completion
-- [ ] All Phases complete
-- [ ] Final test verification
-- [ ] Update cumulative statistics (SKILL.md)
-- [ ] Review next Sprint plan
+### Sprint Complete
+- [ ] All phases done
+- [ ] All tests passing
+- [ ] Next sprint planned (if needed)
 
 ---
 
-**Template Version:** 1.0  
+**Template Version:** 3.0  
 **Last Updated:** 2026-05-24
