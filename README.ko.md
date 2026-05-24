@@ -125,18 +125,29 @@ SGD는 실용적인 중간 지점에 있습니다: **Vibe coding보다 구조적
 
 ## 문서 구조
 
-**필수 문서 1개**, 선택 문서 1개:
+세 개의 필수 문서:
 
-### 필수: `SPRINT_XX_PLAN.md`
-현재 Sprint의 계획. 이게 없으면 그냥 코딩만 하는 것.
+### 1. `CLAUDE.md` — 프로젝트 개요
+무엇을 만드는지. 기술 스택, 아키텍처, 디렉토리 구조.
+이게 없으면 무엇을 만들지 모르니 Sprint를 계획할 수 없습니다.
 
-### 선택: `SKILL.md`
-진행 추적기. 모든 Sprint 이력을 한 파일에서 보고 싶을 때 유용. 하지만 `git log`도 같은 역할을 합니다.
+### 2. `SKILL.md` — 진행 추적기
+현재 어디에 있는지. 누적 테스트, Sprint 이력, 현재 Phase.
+이게 없으면 현재 위치를 모르니 다음 Sprint를 계획할 수 없습니다.
 
-### 필요 없는 것
-- `CLAUDE.md` (프로젝트 개요) — README가 이미 그 역할
-- Memory 시스템 — git history가 이미 그 역할
-- 외부 리뷰 도구 — 테스트가 이미 그 역할
+### 3. `SPRINT_XX_PLAN.md` — 현재 Sprint 계획
+이번 Sprint에서 할 것. Phase 분해, 파일 목록, 테스트 목표.
+[SPRINT_TEMPLATE.md](SPRINT_TEMPLATE.md)에서 생성.
+
+### 흐름
+```
+CLAUDE.md (무엇을 만들지)
+    → SKILL.md (현재 어디인지)
+        → SPRINT_XX_PLAN.md (다음에 할 것)
+            → 구현 → 테스트 → 커밋
+                → SKILL.md 업데이트
+                    → 다음 Sprint 계획
+```
 
 ---
 

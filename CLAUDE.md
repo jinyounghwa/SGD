@@ -1,11 +1,11 @@
-# CLAUDE.md: Project Overview (Optional)
+# CLAUDE.md: Project Overview (Required)
 
 **English | [한국어](CLAUDE.ko.md)**
 
 ---
 
-> This file is optional. It's for providing AI collaborators with project context.
-> Your project's README.md may already serve this purpose.
+> **This file is required.** It describes the project you're building.
+> Without it, you can't plan sprints because you don't know what you're building.
 
 ---
 
@@ -34,13 +34,20 @@ project/
 └── ...
 ```
 
+### Core Architecture
+[Describe the main components and how they connect]
+
+### Key Decisions
+- [Design decision 1 and why]
+- [Design decision 2 and why]
+
 ---
 
 ## Reference
 
 - **Methodology**: See [README.md](README.md)
 - **Sprint Template**: See [SPRINT_TEMPLATE.md](SPRINT_TEMPLATE.md)
-- **Progress**: See [SKILL.md](SKILL.md) or `git log --oneline`
+- **Progress**: See [SKILL.md](SKILL.md)
 
 ---
 

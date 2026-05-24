@@ -1,11 +1,11 @@
-# SKILL.md: Sprint 진행 추적기 (선택 사항)
+# SKILL.md: Sprint 진행 추적기 (필수)
 
 **[English](SKILL.md) | 한국어**
 
 ---
 
-> 이 파일은 선택 사항입니다. `git log --oneline`로도 같은 정보를 얻을 수 있습니다.
-> git history보다 단일 대시보드 파일을 선호할 때만 사용하세요.
+> **이 파일은 필수입니다.** 완료된 것과 다음 할 것을 추적합니다.
+> 이게 없으면 현재 위치를 모르니 Sprint 계획을 세울 수 없습니다.
 
 ---
 
@@ -56,8 +56,6 @@
 2. 누적 테스트 수 업데이트
 3. 마일스톤 항목 추가
 4. 커밋: `git commit -m "docs: SKILL.md - Sprint X Phase Y (N tests)"`
-
-**아니면 그냥 안 해도 됩니다.** `git log`를 대신 쓰세요.
 
 ---
 

@@ -1,11 +1,11 @@
-# SKILL.md: Sprint Progress Tracker (Optional)
+# SKILL.md: Sprint Progress Tracker (Required)
 
 **English | [한국어](SKILL.ko.md)**
 
 ---
 
-> This file is optional. `git log --oneline` gives you the same information.
-> Use this only if you prefer a single dashboard file over git history.
+> **This file is required.** It tracks what's done and what's next.
+> Without it, you can't create sprint plans because you don't know where you are.
 
 ---
 
@@ -56,8 +56,6 @@
 2. Update cumulative test count
 3. Add milestone entry
 4. Commit: `git commit -m "docs: SKILL.md - Sprint X Phase Y (N tests)"`
-
-**Or don't.** Just use `git log` instead.
 
 ---
 

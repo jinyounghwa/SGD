@@ -125,18 +125,29 @@ SGD sits in a practical middle ground: **more structure than vibe coding, less o
 
 ## Document Structure
 
-You need exactly **one required document** and one **optional document**:
+Three required documents:
 
-### Required: `SPRINT_XX_PLAN.md`
-Your plan for the current sprint. Without this, you're just coding blindly.
+### 1. `CLAUDE.md` — Project Overview
+What you're building. Tech stack, architecture, directory structure.
+Without this, you can't plan sprints because you don't know what you're building.
 
-### Optional: `SKILL.md`
-A progress tracker. Useful if you want a single file showing all sprint history. But `git log` works just as well.
+### 2. `SKILL.md` — Progress Tracker
+Where you are right now. Cumulative tests, sprint history, current phase.
+Without this, you can't plan the next sprint because you don't know where you are.
 
-### Not Needed
-- `CLAUDE.md` (project overview) — your README already does this
-- Memory system — your git history already does this
-- External review tools — your tests already do this
+### 3. `SPRINT_XX_PLAN.md` — Current Sprint Plan
+What you're doing this sprint. Phase breakdown, file list, test targets.
+Created from [SPRINT_TEMPLATE.md](SPRINT_TEMPLATE.md).
+
+### Flow
+```
+CLAUDE.md (what to build)
+    → SKILL.md (where we are)
+        → SPRINT_XX_PLAN.md (what to do next)
+            → Implement → Test → Commit
+                → Update SKILL.md
+                    → Plan next sprint
+```
 
 ---
 
