@@ -5,7 +5,7 @@
 ---
 
 > Copy this template to create `SPRINT_XX_PLAN.md` before each sprint.
-> This is the only document you actually need.
+> Prerequisites: [CLAUDE.md](CLAUDE.md) (project overview) and [SKILL.md](SKILL.md) (current progress) must exist first.
 
 ---
 
@@ -103,7 +103,8 @@ Cumulative: [prev] + [new] = [total] tests
 ## Checklist
 
 ### Before Starting
-- [ ] Plan created (this file)
+- [ ] [CLAUDE.md](CLAUDE.md) exists with project overview
+- [ ] [SKILL.md](SKILL.md) is up to date with current progress
 - [ ] Phases defined with test targets
 
 ### Each Phase
@@ -114,7 +115,16 @@ Cumulative: [prev] + [new] = [total] tests
 ### Sprint Complete
 - [ ] All phases done
 - [ ] All tests passing
+- [ ] [SKILL.md](SKILL.md) updated with results
 - [ ] Next sprint planned (if needed)
+
+---
+
+## Reference
+
+- [CLAUDE.md](CLAUDE.md) — Project overview (what we're building)
+- [SKILL.md](SKILL.md) — Progress tracker (where we are)
+- [README.md](README.md) — SGD methodology
 
 ---
 

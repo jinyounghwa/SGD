@@ -5,7 +5,7 @@
 ---
 
 > 각 Sprint 시작 전 이 템플릿을 복사하여 `SPRINT_XX_PLAN.md`로 생성합니다.
-> 실제로 필요한 유일한 문서입니다.
+> 전제조건: [CLAUDE.md](CLAUDE.md) (프로젝트 개요)와 [SKILL.md](SKILL.md) (현재 진행)가 먼저 있어야 합니다.
 
 ---
 
@@ -103,7 +103,8 @@ feat: Sprint [N] Phase [M] - [제목] ([X] tests)
 ## 체크리스트
 
 ### 시작 전
-- [ ] 계획 수립 (이 파일)
+- [ ] [CLAUDE.md](CLAUDE.md)에 프로젝트 개요가 있음
+- [ ] [SKILL.md](SKILL.md)에 현재 진행 상태가 최신임
 - [ ] Phase별 테스트 목표 설정
 
 ### 각 Phase
@@ -114,7 +115,16 @@ feat: Sprint [N] Phase [M] - [제목] ([X] tests)
 ### Sprint 완료
 - [ ] 모든 Phase 완료
 - [ ] 모든 테스트 통과
+- [ ] [SKILL.md](SKILL.md)에 결과 업데이트
 - [ ] 다음 Sprint 계획 (필요시)
+
+---
+
+## 참고
+
+- [CLAUDE.md](CLAUDE.md) — 프로젝트 개요 (무엇을 만드는지)
+- [SKILL.md](SKILL.md) — 진행 추적기 (현재 어디인지)
+- [README.md](README.md) — SGD 방법론
 
 ---
 
