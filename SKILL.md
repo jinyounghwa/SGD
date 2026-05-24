@@ -1,464 +1,467 @@
-# SKILL.md: Sprint 진행률 추적 가이드
+# SKILL.md: Sprint Progress Tracking Guide
 
-**한국어 | [English](SKILL.en.md)**
-
----
-
-> SGD로 진행하는 중소규모 프로젝트의 메타 정보 및 누적 진행률을 한눈에 파악하는 대시보드
-> **핵심**: 이 파일 하나로 세션 단절 후 30초 만에 현재 상태를 파악할 수 있습니다.
+**English | [한국어](SKILL.ko.md)**
 
 ---
 
-## 목표
-
-이 문서는 **진행 중인 프로젝트의 Sprint별 진행상황을 실시간으로 추적**합니다.
-- 💡 **누가 봐도** 현재 어디까지 왔는지 알 수 있음
-- 📊 **객관적** 메트릭 (테스트 수, 코드량, 개발 시간)
-- 🎯 **다음 단계** 명확히 표시
+> A dashboard that tracks the meta information and cumulative progress of a small-to-medium project using SGD — at a glance.
+> **Key**: This single file lets you grasp the current status in 30 seconds after a session disconnection.
 
 ---
 
-## 프로젝트 상태 개요
+## Purpose
 
-이 템플릿에 맞춰 본인의 프로젝트 정보를 입력하세요:
-
-| 항목 | 입력 예시 | 설명 |
-|------|---------|------|
-| **프로젝트명** | AWS Guardian / 자신의 프로젝트 | 진행 중인 프로젝트 이름 |
-| **현재 Sprint** | 38 / N | 현재 진행 중인 Sprint 번호 |
-| **총 완료 테스트** | 153 / 총 테스트 수 | 지금까지 PASS한 테스트 개수 |
-| **총 예정 테스트** | 332 / 전체 목표 | 프로젝트 완료 시 목표 테스트 수 |
-| **완료율** | 46% | (완료 테스트 / 예정 테스트) × 100 |
-| **총 코드 라인** | 76,000+ | 지금까지 작성한 코드 총 라인 수 |
-| **개발 기간** | ~35시간 | 지금까지 소요된 개발 시간 |
+This document **tracks the real-time progress of each Sprint in an ongoing project.**
+- 💡 **Anyone can see** where things stand right now
+- 📊 **Objective** metrics (test count, code volume, development time)
+- 🎯 **Next steps** clearly indicated
 
 ---
 
-## Sprint 진행 타임라인
+## Project Status Overview
 
-이 섹션은 **각 Sprint의 목표, 테스트 수, 상태를 시간 순서대로 기록**합니다.
+Fill in your project information using this template:
 
-> 💡 **작성 패턴:**
-> - 각 Sprint가 완료되면 상태를 `✅ Complete`로 변경
-> - 진행 중이면 `🔄 In Progress`, 계획 단계면 `⏳ Planned`
-> - Phase별로 어떤 기능이 구현되었는지 명시
-> - 프로젝트에 맞게 목표와 기능을 작성
-
-### ✅ Sprint 1: 기초 기능
-- **기간**: 4시간
-- **목표**: [프로젝트 첫 단계 목표]
-- **테스트**: 22개
-- **누적**: 22 tests
-- **상태**: ✅ Complete
-
-**Phase 구성:**
-- Phase 1: [기능 1] (9 tests)
-- Phase 2: [기능 2] (5 tests)
-- Phase 3: [기능 3] (4 tests)
-- Phase 4: [기능 4] (4 tests)
-
-### ✅ Sprint 2: 핵심 기능 확장
-- **기간**: 5시간
-- **목표**: [두 번째 단계 목표]
-- **테스트**: 36개
-- **누적**: 58 tests
-- **상태**: ✅ Complete
-
-**Phase 구성:**
-- Phase 1: [기능 A] (12 tests)
-- Phase 2: [기능 B] (15 tests)
-- Phase 3: [기능 C] (9 tests)
-
-### ✅ Sprint 3: 고급 기능 개발
-- **기간**: 8시간
-- **목표**: [세 번째 단계 목표]
-- **테스트**: 56개
-- **누적**: 114 tests
-- **상태**: ✅ Complete
-
-**Phase 구성:**
-- Phase 1: [기능 1] (15 tests)
-- Phase 2: [기능 2] (14 tests)
-- Phase 3: [기능 3] (15 tests)
-- Phase 4: [기능 4] (12 tests)
-
-### 🔄 Sprint 4: 통합 & 최적화
-- **기간**: 예상 12시간 (진행 중)
-- **목표**: [네 번째 단계 목표]
-- **테스트**: 총 65개 예정
-- **누적**: [현재] / [목표] tests
-- **상태**: 🔄 In Progress
-
-**Phase 진행:**
-- Phase 1: [첫 번째 작업] (23 tests) ✅
-  - [세부 항목 1]
-  - [세부 항목 2]
-  - [세부 항목 3]
-  - [세부 항목 4]
-
-- Phase 2: [두 번째 작업] (16 tests) ✅
-  - [세부 항목 1]
-  - [세부 항목 2]
-  - [세부 항목 3]
-  - [세부 항목 4]
-
-- Phase 3: [세 번째 작업] (8 tests) 🔄 In Progress
-  - [세부 항목 1]
-  - [세부 항목 2]
-  - [세부 항목 3]
-  - [세부 항목 4]
-
-- Phase 4: [네 번째 작업] (12 tests) ⏳ Planned
-  - [세부 항목 1]
-  - [세부 항목 2]
-  - [세부 항목 3]
-  - [세부 항목 4]
-
-- Phase 5: [다섯 번째 작업] (10 tests) ⏳ Planned
-  - [세부 항목 1]
-  - [세부 항목 2]
-  - [세부 항목 3]
-  - [세부 항목 4]
+| Item | Example | Description |
+|------|---------|-------------|
+| **Project Name** | AWS Guardian / Your Project | Name of the project in progress |
+| **Current Sprint** | 38 / N | Current Sprint number |
+| **Total Tests Completed** | 153 / Total Tests | Number of tests that have PASSED so far |
+| **Total Tests Planned** | 332 / Full Target | Target test count when project is complete |
+| **Completion Rate** | 46% | (Completed tests / Planned tests) × 100 |
+| **Total Code Lines** | 76,000+ | Total lines of code written so far |
+| **Development Time** | ~35 hours | Development time spent so far |
 
 ---
 
-## 누적 통계
+## Sprint Progress Timeline
 
-**진행 중인 프로젝트의 객관적 메트릭을 기록하세요.**
+This section **records each Sprint's goal, test count, and status in chronological order.**
 
-### 테스트 수
+> 💡 **Writing Pattern:**
+> - When a Sprint is complete, change status to `✅ Complete`
+> - If in progress: `🔄 In Progress`, if planning stage: `⏳ Planned`
+> - Specify which features were implemented per Phase
+> - Write goals and features to match your project
 
-진행 중에 이 표를 업데이트하면 누적 진행률을 시각적으로 파악할 수 있습니다:
+### ✅ Sprint 1: Foundation
+- **Duration**: 4 hours
+- **Goal**: [Project first-step goal]
+- **Tests**: 22
+- **Cumulative**: 22 tests
+- **Status**: ✅ Complete
+
+**Phase Structure:**
+- Phase 1: [Feature 1] (9 tests)
+- Phase 2: [Feature 2] (5 tests)
+- Phase 3: [Feature 3] (4 tests)
+- Phase 4: [Feature 4] (4 tests)
+
+### ✅ Sprint 2: Core Feature Expansion
+- **Duration**: 5 hours
+- **Goal**: [Second step goal]
+- **Tests**: 36
+- **Cumulative**: 58 tests
+- **Status**: ✅ Complete
+
+**Phase Structure:**
+- Phase 1: [Feature A] (12 tests)
+- Phase 2: [Feature B] (15 tests)
+- Phase 3: [Feature C] (9 tests)
+
+### ✅ Sprint 3: Advanced Feature Development
+- **Duration**: 8 hours
+- **Goal**: [Third step goal]
+- **Tests**: 56
+- **Cumulative**: 114 tests
+- **Status**: ✅ Complete
+
+**Phase Structure:**
+- Phase 1: [Feature 1] (15 tests)
+- Phase 2: [Feature 2] (14 tests)
+- Phase 3: [Feature 3] (15 tests)
+- Phase 4: [Feature 4] (12 tests)
+
+### 🔄 Sprint 4: Integration & Optimization
+- **Duration**: Estimated 12 hours (in progress)
+- **Goal**: [Fourth step goal]
+- **Tests**: Total 65 planned
+- **Cumulative**: [Current] / [Target] tests
+- **Status**: 🔄 In Progress
+
+**Phase Progress:**
+- Phase 1: [First Task] (23 tests) ✅
+  - [Detail 1]
+  - [Detail 2]
+  - [Detail 3]
+  - [Detail 4]
+
+- Phase 2: [Second Task] (16 tests) ✅
+  - [Detail 1]
+  - [Detail 2]
+  - [Detail 3]
+  - [Detail 4]
+
+- Phase 3: [Third Task] (8 tests) 🔄 In Progress
+  - [Detail 1]
+  - [Detail 2]
+  - [Detail 3]
+  - [Detail 4]
+
+- Phase 4: [Fourth Task] (12 tests) ⏳ Planned
+  - [Detail 1]
+  - [Detail 2]
+  - [Detail 3]
+  - [Detail 4]
+
+- Phase 5: [Fifth Task] (10 tests) ⏳ Planned
+  - [Detail 1]
+  - [Detail 2]
+  - [Detail 3]
+  - [Detail 4]
+
+---
+
+## Cumulative Statistics
+
+**Record objective metrics for your ongoing project.**
+
+### Test Count
+
+Update this table as you progress to visually track cumulative progress:
 
 ```
 Sprint 1:   22 tests ████░░░░░░░░░░░░░░░░░ 22 total
 Sprint 2:   36 tests ██████░░░░░░░░░░░░░░░░ 58 total
 Sprint 3:   56 tests █████████░░░░░░░░░░░░░ 114 total
-Sprint 4:   65 tests (예정)
+Sprint 4:   65 tests (planned)
             └─ Phase 1: 23 tests ✅
             └─ Phase 2: 16 tests ✅
             └─ Phase 3: 8 tests 🔄
             └─ Phase 4: 12 tests ⏳
             └─ Phase 5: 10 tests ⏳
 
-목표: [총 목표 테스트 수]
+Target: [Total target test count]
 ```
 
-> **팁**: 각 Sprint마다 누적 테스트 수를 표시하면 진행 속도가 눈에 띄게 향상되는지 확인할 수 있습니다.
+> **Tip**: Displaying cumulative tests per Sprint helps you see if your pace is improving.
 
-### 코드 규모
+### Code Scale
 
-이 프로젝트가 얼마나 성장했는지 추적합니다:
+Track how much your project has grown:
 
-- **총 코드 라인**: [프로젝트 LOC]
-- **백엔드 로직**: [백엔드 LOC]
-- **테스트 코드**: [테스트 LOC] (전체 코드의 [비율]%)
-- **프론트엔드**: [프론트엔드 LOC]
-- **인프라/설정**: [인프라 LOC]
+- **Total Code Lines**: [Project LOC]
+- **Backend Logic**: [Backend LOC]
+- **Test Code**: [Test LOC] ([ratio]% of total code)
+- **Frontend**: [Frontend LOC]
+- **Infrastructure/Config**: [Infra LOC]
 
-> 💡 **팁**: 주기적으로 LOC를 계산하면 프로젝트 복잡도 증가를 추적할 수 있습니다.
+> 💡 **Tip**: Periodically calculating LOC helps track increasing project complexity.
 > ```bash
-> # 백엔드 코드
+> # Backend code
 > find src -name "*.py" -o -name "*.js" -o -name "*.ts" | xargs wc -l | tail -1
-> # 테스트 코드
+> # Test code
 > find tests -name "*.py" -o -name "*.test.js" -o -name "*.test.ts" | xargs wc -l | tail -1
 > ```
 
-### 개발 속도
+### Development Velocity
 
-프로젝트의 속도와 효율성을 측정합니다:
+Measure your project's speed and efficiency:
 
-- **평균 Phase 시간**: [프로젝트 평균] 시간
-- **평균 테스트/시간**: [프로젝트 평균] tests/hour
-- **총 개발 시간**: [누적 시간]
+- **Average Phase Time**: [Project average] hours
+- **Average Tests/Hour**: [Project average] tests/hour
+- **Total Development Time**: [Cumulative hours]
 
-> 💡 **해석**:
-> - 테스트/시간이 높을수록 개발이 효율적 (팀 협업 도움, 자동화 수준)
-> - Phase별로 시간이 줄어들면 개발 프로세스가 안정화됨 (학습 곡선 완화)
-> - 예상 완료 시간 = (남은 테스트) / (평균 테스트/시간)
-> - 예: 50개 남은 테스트, 평균 10 tests/hour = 5시간
-
----
-
-## 주요 마일스톤
-
-프로젝트의 주요 완료 지점을 시간 순서대로 기록합니다:
-
-| 날짜 | 이벤트 | 테스트 | 진행률 |
-|------|--------|--------|--------|
-| YYYY-MM-DD | Sprint 1 완료 | 22 ✅ | 7% |
-| YYYY-MM-DD | Sprint 2 완료 | 58 ✅ | 18% |
-| YYYY-MM-DD | Sprint 3 완료 | 114 ✅ | 34% |
-| YYYY-MM-DD | Sprint 4 Phase 1-2 완료 | 153 ✅ | 46% |
-| YYYY-MM-DD | [중요 이벤트] | - | - |
-| YYYY-MM-DD | Sprint 4 Phase 3 시작 | 🔄 | - |
-| YYYY-MM-DD | Sprint 4 완료 예정 | [목표] ✅ | 100% |
-
-> 💡 **팁**: 마일스톤을 명시하면 팀원이나 이해관계자에게 진행 상황을 쉽게 설명할 수 있습니다.
-> - 각 Sprint 완료 후 즉시 기록
-> - 예상 완료일도 함께 표시하면 일정 관리 용이
+> 💡 **Interpretation**:
+> - Higher tests/hour = more efficient development (helped by team collaboration, automation)
+> - Decreasing time per Phase means the development process is stabilizing (learning curve flattening)
+> - Estimated completion = (Remaining tests) / (Average tests/hour)
+> - Example: 50 remaining tests, average 10 tests/hour = 5 hours
 
 ---
 
-## 기술 부채 추적
+## Key Milestones
 
-진행 중인 프로젝트에서 해결해야 할 항목들을 우선순위별로 정리합니다:
+Record your project's major completion points in chronological order:
 
-### 낮음 (처리 필요 없음)
-- ✅ 코드 응집도 양호
-- ✅ 테스트 커버리지 >90%
-- ✅ 문서화 충분
+| Date | Event | Tests | Progress |
+|------|-------|-------|----------|
+| YYYY-MM-DD | Sprint 1 Complete | 22 ✅ | 7% |
+| YYYY-MM-DD | Sprint 2 Complete | 58 ✅ | 18% |
+| YYYY-MM-DD | Sprint 3 Complete | 114 ✅ | 34% |
+| YYYY-MM-DD | Sprint 4 Phase 1-2 Complete | 153 ✅ | 46% |
+| YYYY-MM-DD | [Important Event] | - | - |
+| YYYY-MM-DD | Sprint 4 Phase 3 Started | 🔄 | - |
+| YYYY-MM-DD | Sprint 4 Completion Planned | [Target] ✅ | 100% |
 
-### 중간 (개선 권장)
-- ⚠️ [개선 필요한 항목 1] (현재 상태)
-- ⚠️ [개선 필요한 항목 2] (현재 상태)
-
-예시:
-- ⚠️ 엔드투엔드(e2e) 테스트 추가 (현재: 단위 테스트만 있음)
-- ⚠️ 부하 테스트 구현 (현재: 기능 테스트만 있음)
-- ⚠️ API 문서 작성 (현재: 기본 README만 있음)
-
-### 높음 (미구현)
-- 🔴 [주요 미구현 항목 1] (우선순위: 낮음/중간/높음)
-- 🔴 [주요 미구현 항목 2] (우선순위: 낮음/중간/높음)
-
-예시:
-- 🔴 다중 지역/멀티 테넌트 지원 (우선순위: 낮음)
-- 🔴 머신러닝 기반 분석 추가 (우선순위: 낮음)
-- 🔴 모바일 앱 개발 (우선순위: 중간)
+> 💡 **Tip**: Documenting milestones makes it easy to explain progress to team members or stakeholders.
+> - Record immediately after each Sprint completion
+> - Include estimated completion dates for easier schedule management
 
 ---
 
-## 다음 마일스톤
+## Technical Debt Tracking
 
-### 현재 Sprint 완료 조건
+Organize items that need to be resolved in your project by priority:
+
+### Low (No action needed)
+- ✅ Good code cohesion
+- ✅ Test coverage >90%
+- ✅ Sufficient documentation
+
+### Medium (Improvement recommended)
+- ⚠️ [Item needing improvement 1] (current state)
+- ⚠️ [Item needing improvement 2] (current state)
+
+Examples:
+- ⚠️ Add end-to-end (e2e) tests (Currently: unit tests only)
+- ⚠️ Implement load testing (Currently: functional tests only)
+- ⚠️ Write API documentation (Currently: basic README only)
+
+### High (Not yet implemented)
+- 🔴 [Major unimplemented item 1] (Priority: Low/Medium/High)
+- 🔴 [Major unimplemented item 2] (Priority: Low/Medium/High)
+
+Examples:
+- 🔴 Multi-region/multi-tenant support (Priority: Low)
+- 🔴 ML-based analysis addition (Priority: Low)
+- 🔴 Mobile app development (Priority: Medium)
+
+---
+
+## Next Milestone
+
+### Current Sprint Completion Criteria
 
 ```
-[ ] Phase 1: [기능명] (NN tests) - [상태]
-[ ] Phase 2: [기능명] (NN tests) - [상태]
-[ ] Phase 3: [기능명] (NN tests) - [상태]
-[ ] 모든 테스트 PASS
+[ ] Phase 1: [Feature Name] (NN tests) - [Status]
+[ ] Phase 2: [Feature Name] (NN tests) - [Status]
+[ ] Phase 3: [Feature Name] (NN tests) - [Status]
+[ ] All tests PASS
 [ ] Git commit
 ```
 
-예시:
+Example:
 ```
-[ ] Phase 3: 비용 관리 기능 (8 tests) - 진행 중
-[ ] Phase 4: 대시보드 UI 개선 (12 tests) - 예정
-[ ] Phase 5: 다중 계정 지원 (10 tests) - 예정
-[ ] 총 332 tests PASS
-```
-
-### 다음 Sprint 계획
-
-```
-Sprint N - [주제]
-- **목표**: [목표 설명]
-- **테스트**: [예상 테스트 수]
-- **누적**: [누적 테스트 수]
-- **우선순위**: High / Medium / Low
+[ ] Phase 3: Cost Management Features (8 tests) - In Progress
+[ ] Phase 4: Dashboard UI Improvements (12 tests) - Planned
+[ ] Phase 5: Multi-Account Support (10 tests) - Planned
+[ ] Total 332 tests PASS
 ```
 
-예시:
+### Next Sprint Plan
+
 ```
-Sprint 5 - 머신러닝 기반 분석
-- **목표**: 데이터 패턴 학습 + 자동 분류 + 성능 벤치마킹
-- **테스트**: 25-30 tests
-- **누적**: 357-362 tests
-- **우선순위**: Medium
+Sprint N - [Topic]
+- **Goal**: [Goal description]
+- **Tests**: [Expected test count]
+- **Cumulative**: [Cumulative test count]
+- **Priority**: High / Medium / Low
+```
+
+Example:
+```
+Sprint 5 - ML-Based Analysis
+- **Goal**: Data pattern learning + auto-classification + performance benchmarking
+- **Tests**: 25-30 tests
+- **Cumulative**: 357-362 tests
+- **Priority**: Medium
 ```
 
 ---
 
-## 팀/협업 정보
+## Team/Collaboration Information
 
-프로젝트에 참여하는 팀원들과 그들의 역할을 명시합니다:
+Document the team members participating in the project and their roles:
 
-| 역할 | 이름 | 상태 | 담당 영역 |
-|------|------|------|---------|
-| 주 개발자 | [이름] | 🟢 Active | [담당 부분] |
-| 보조 개발자 | [이름] | 🟢 Active | [담당 부분] |
-| 코드 리뷰 | [이름] | 🟢 Active | [담당 부분] |
-| QA / 테스터 | [이름] | 🟡 Paused | [담당 부분] |
+| Role | Name | Status | Area |
+|------|------|--------|------|
+| Lead Developer | [Name] | 🟢 Active | [Responsible area] |
+| Supporting Developer | [Name] | 🟢 Active | [Responsible area] |
+| Code Review | [Name] | 🟢 Active | [Responsible area] |
+| QA / Tester | [Name] | 🟡 Paused | [Responsible area] |
 
-**상태 범례**: 🟢 Active (현재 진행 중), 🟡 Paused (일시 중단), ⚫ N/A (미정), 🔴 Blocked (차단됨)
+**Status Legend**: 🟢 Active (currently working), 🟡 Paused (temporarily suspended), ⚫ N/A (not set), 🔴 Blocked
 
-예시:
-| 역할 | 이름 | 상태 | 담당 영역 |
-|------|------|------|---------|
-| 주 개발자 | Alice | 🟢 Active | 백엔드 + 인프라 |
-| 프론트엔드 개발자 | Bob | 🟢 Active | 웹 UI + 대시보드 |
-| 코드 리뷰어 | Charlie | 🟢 Active | 코드 품질 + 테스트 |
-| 기술 리더 | (미정) | ⚫ N/A | - |
+Example:
+| Role | Name | Status | Area |
+|------|------|--------|------|
+| Lead Developer | Alice | 🟢 Active | Backend + Infrastructure |
+| Frontend Developer | Bob | 🟢 Active | Web UI + Dashboard |
+| Code Reviewer | Charlie | 🟢 Active | Code quality + Testing |
+| Tech Lead | (TBD) | ⚫ N/A | - |
 
 ---
 
-## 체크리스트 (현재 Sprint)
+## Checklist (Current Sprint)
 
-진행 중인 Sprint의 모든 작업을 단계별로 추적합니다.
+Track all tasks for the ongoing Sprint step by step.
 
-### 계획 단계
-- [ ] SPRINT_XX_PLAN.md 작성
-- [ ] Phase별 구현 파일 명시
-- [ ] 테스트 수 목표 설정
-- [ ] 팀 리뷰 및 승인
+### Planning Stage
+- [ ] Write SPRINT_XX_PLAN.md
+- [ ] Specify implementation files per Phase
+- [ ] Set test count targets
+- [ ] Team review and approval
 
-### Phase 1: [첫 번째 기능]
-- [ ] [구현 항목 1]
-- [ ] [구현 항목 2]
-- [ ] [N]개 테스트 작성
-- [ ] 모든 테스트 PASS
-- [ ] Git commit: `feat: Sprint X Phase 1 - [기능명]`
+### Phase 1: [First Feature]
+- [ ] [Implementation item 1]
+- [ ] [Implementation item 2]
+- [ ] Write [N] tests
+- [ ] All tests PASS
+- [ ] Git commit: `feat: Sprint X Phase 1 - [Feature Name]`
 
-### Phase 2: [두 번째 기능]
-- [ ] [구현 항목 1]
-- [ ] [구현 항목 2]
-- [ ] [N]개 테스트 작성
-- [ ] 모든 테스트 PASS
-- [ ] Git commit: `feat: Sprint X Phase 2 - [기능명]`
+### Phase 2: [Second Feature]
+- [ ] [Implementation item 1]
+- [ ] [Implementation item 2]
+- [ ] Write [N] tests
+- [ ] All tests PASS
+- [ ] Git commit: `feat: Sprint X Phase 2 - [Feature Name]`
 
-### Phase 3: [세 번째 기능]
-- [ ] [구현 항목 1]
-- [ ] [구현 항목 2]
-- [ ] [N]개 테스트 작성
-- [ ] 모든 테스트 PASS
-- [ ] Git commit: `feat: Sprint X Phase 3 - [기능명]`
+### Phase 3: [Third Feature]
+- [ ] [Implementation item 1]
+- [ ] [Implementation item 2]
+- [ ] Write [N] tests
+- [ ] All tests PASS
+- [ ] Git commit: `feat: Sprint X Phase 3 - [Feature Name]`
 
-### 마무리
-- [ ] 모든 Phase 완료 확인
-- [ ] 누적 통계 업데이트
-- [ ] SKILL.md 업데이트
-- [ ] 다음 Sprint 계획 수립
+### Wrap-up
+- [ ] Confirm all Phases complete
+- [ ] Update cumulative statistics
+- [ ] Update SKILL.md
+- [ ] Plan next Sprint
 
-**예시 (실제 프로젝트 체크리스트):**
+**Example (Actual Project Checklist):**
 
-### 계획 단계
-- [x] SPRINT_4_PLAN.md 작성
-- [x] Phase별 구현 파일 명시
-- [x] 테스트 수 목표 설정
-- [x] 팀 리뷰 및 승인
+### Planning Stage
+- [x] Write SPRINT_4_PLAN.md
+- [x] Specify implementation files per Phase
+- [x] Set test count targets
+- [x] Team review and approval
 
-### Phase 1: API 통합 검증
-- [x] RestClient 구현
-- [x] 에러 핸들링 추가
-- [x] 12개 테스트 작성
-- [x] 모든 테스트 PASS
+### Phase 1: API Integration Verification
+- [x] Implement RestClient
+- [x] Add error handling
+- [x] Write 12 tests
+- [x] All tests PASS
 - [x] Git commit
 
-### Phase 2: 데이터 캐싱
-- [x] CacheLayer 구현
-- [x] TTL 관리 로직
-- [x] 8개 테스트 작성
-- [x] 모든 테스트 PASS
+### Phase 2: Data Caching
+- [x] Implement CacheLayer
+- [x] TTL management logic
+- [x] Write 8 tests
+- [x] All tests PASS
 - [x] Git commit
 
-### Phase 3: 성능 최적화
-- [ ] 쿼리 최적화
-- [ ] 인덱싱 추가
-- [ ] 10개 테스트 작성
-- [ ] 모든 테스트 PASS
-- [ ] Git commit (진행 중)
+### Phase 3: Performance Optimization
+- [ ] Query optimization
+- [ ] Add indexing
+- [ ] Write 10 tests
+- [ ] All tests PASS
+- [ ] Git commit (in progress)
 
 ---
 
-## 문서 링크 및 활용법
+## Document Links & Usage
 
-이 SKILL.md는 **진행 중인 프로젝트의 메타 대시보드** 역할을 합니다.
+This SKILL.md serves as the **meta dashboard for your ongoing project.**
 
-### 표준 프로젝트 구조
+### Standard Project Structure
 
 ```
 project-root/
-├── CLAUDE.md              ← 프로젝트 개요 + 개발 가이드
-├── README.md              ← 프로젝트 소개 (대외용)
+├── CLAUDE.md              ← Project overview + dev guide
+├── README.md              ← Project introduction (external)
 │
-├── SGD/                   ← SGD 방법론 문서
-│   ├── SKILL.md           ← 이 파일 (진행률 추적)
-│   ├── CLAUDE.md          ← 개발자 시작 가이드
-│   ├── README.md          ← SGD 방법론 설명
-│   └── SPRINT_TEMPLATE.md ← Sprint 계획 템플릿
+├── SGD/                   ← SGD methodology docs
+│   ├── SKILL.md           ← This file (progress tracking)
+│   ├── SKILL.ko.md      ← Korean version
+│   ├── CLAUDE.md          ← Developer getting-started guide
+│   ├── CLAUDE.ko.md       ← Korean version
+│   ├── README.md          ← SGD methodology explanation
+│   ├── README.ko.md       ← Korean version
+│   └── SPRINT_TEMPLATE.md ← Sprint planning template
 │
-├── SPRINT_01_PLAN.md      ← Sprint 1 상세 계획
-├── SPRINT_02_PLAN.md      ← Sprint 2 상세 계획
-├── SPRINT_XX_PLAN.md      ← 각 Sprint의 상세 계획
+├── SPRINT_01_PLAN.md      ← Sprint 1 detailed plan
+├── SPRINT_02_PLAN.md      ← Sprint 2 detailed plan
+├── SPRINT_XX_PLAN.md      ← Detailed plan for each Sprint
 │
-└── /tests                 ← 테스트 코드 (Phase별)
+└── /tests                 ← Test code (per Phase)
 ```
 
-### 문서 역할
+### Document Roles
 
-| 문서 | 목적 | 작성 시기 | 업데이트 빈도 |
-|------|------|----------|------------|
-| CLAUDE.md | 프로젝트 개요 및 개발 방법 | 프로젝트 시작 | 필요할 때만 |
-| SPRINT_XX_PLAN.md | 각 Sprint의 상세 계획 | Sprint 시작 전 | Sprint 시작 시 |
-| SKILL.md (이 파일) | 진행률 추적 대시보드 | 첫 Sprint 시작 후 | Phase 완료 후 |
+| Document | Purpose | When Written | Update Frequency |
+|----------|---------|-------------|-----------------|
+| CLAUDE.md | Project overview and dev method | Project start | Only when needed |
+| SPRINT_XX_PLAN.md | Detailed plan per Sprint | Before Sprint start | At Sprint start |
+| SKILL.md (this file) | Progress tracking dashboard | After first Sprint starts | After Phase completion |
 
-### 일반적인 사용 흐름
+### Typical Usage Flow
 
-1. **프로젝트 시작**
-   - CLAUDE.md 작성 (프로젝트 개요)
-   - README.md 작성 (프로젝트 소개)
+1. **Project Start**
+   - Write CLAUDE.md (project overview)
+   - Write README.md (project introduction)
 
-2. **Sprint 시작**
-   - SPRINT_XX_PLAN.md 작성
-   - SKILL.md에서 Sprint 정보 추가
+2. **Sprint Start**
+   - Write SPRINT_XX_PLAN.md
+   - Add Sprint info in SKILL.md
 
-3. **Phase 완료**
-   - SKILL.md의 체크리스트 업데이트
-   - 누적 통계 갱신
+3. **Phase Completion**
+   - Update checklist in SKILL.md
+   - Refresh cumulative statistics
    - Git commit
 
-4. **Sprint 완료**
-   - SKILL.md의 마일스톤 업데이트
-   - 다음 Sprint 계획 추가
+4. **Sprint Completion**
+   - Update milestones in SKILL.md
+   - Add next Sprint plan
 
 ---
 
-## 이 문서 유지보수 가이드
+## Document Maintenance Guide
 
-### Phase 완료 후 (매 Phase마다)
-1. 체크리스트에서 해당 Phase의 체크박스 업데이트 (`[ ]` → `[x]`)
-2. **"누적 통계" 섹션 업데이트:**
-   - Sprint의 누적 테스트 수 변경
-   - 완료율 재계산
-3. **"주요 마일스톤" 섹션 업데이트:**
-   - 오늘 날짜와 이벤트 추가
+### After Phase Completion (every Phase)
+1. Update the corresponding Phase checkbox in the checklist (`[ ]` → `[x]`)
+2. **Update "Cumulative Statistics" section:**
+   - Change Sprint's cumulative test count
+   - Recalculate completion rate
+3. **Update "Key Milestones" section:**
+   - Add today's date and event
 4. Git commit:
    ```bash
    git add SKILL.md
    git commit -m "docs: Update SKILL.md - Sprint X Phase Y complete (NN tests)"
    ```
 
-### Sprint 시작 시 (매 Sprint 시작)
-1. "프로젝트 상태 개요" 섹션에서 "현재 Sprint" 번호 변경
-2. "Sprint 진행 타임라인" 섹션에 새로운 Sprint 항목 추가
-3. "다음 마일스톤"의 체크리스트 업데이트
-4. "팀/협업 정보" 확인 (변경사항 있으면 업데이트)
+### At Sprint Start (every Sprint)
+1. Change "Current Sprint" number in "Project Status Overview" section
+2. Add new Sprint entry in "Sprint Progress Timeline" section
+3. Update checklist in "Next Milestone"
+4. Check "Team/Collaboration Info" (update if changed)
 
-### 일주일마다 (주간 점검)
-1. **완료율 계산**: `(완료 테스트 / 예정 테스트) × 100`
-2. **개발 속도 확인**: `누적 테스트 / 누적 시간`
-3. **예상 완료일 계산**: `(남은 테스트) / (평균 테스트/시간)`
-4. 필요하면 "다음 마일스톤" 수정
+### Weekly (weekly review)
+1. **Calculate completion rate**: `(Completed tests / Planned tests) × 100`
+2. **Check development velocity**: `Cumulative tests / Cumulative hours`
+3. **Calculate estimated completion**: `(Remaining tests) / (Average tests/hour)`
+4. Modify "Next Milestone" if needed
 
-### 분기별 (또는 월 단위 검토)
-1. 누적 통계 (코드 규모, 개발 시간) 갱신
-2. 기술 부채 재검토 및 업데이트
-3. 팀 상태 및 역할 확인
+### Quarterly (or monthly review)
+1. Refresh cumulative statistics (code scale, development time)
+2. Revisit and update technical debt
+3. Check team status and roles
 
 ---
 
-## 빠른 참조
+## Quick Reference
 
-| 상황 | 수행할 작업 |
-|------|----------|
-| Phase 끝남 | 누적 테스트 업데이트 + 마일스톤 기록 + commit |
-| Sprint 시작 | Sprint 정보 추가 + 체크리스트 초기화 |
-| 주간 점검 | 완료율 / 속도 계산 + 예상 완료일 확인 |
-| 버그/지연 | 기술 부채 섹션에 기록 + 다음 마일스톤 조정 |
+| Situation | Action |
+|-----------|--------|
+| Phase ended | Update cumulative tests + record milestone + commit |
+| Sprint started | Add Sprint info + initialize checklist |
+| Weekly review | Calculate completion rate / velocity + check estimated completion |
+| Bug/delay | Record in technical debt section + adjust next milestone |
 
 ---
 
 **Last Updated:** 2026-05-24  
-**Next Update:** Sprint 38 Phase 3 완료 후  
+**Next Update:** After Sprint 38 Phase 3 completion  
 **Project Owner:** jinyounghwa

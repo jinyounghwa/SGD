@@ -1,239 +1,239 @@
-# CLAUDE.md: 개발자를 위한 프로젝트 시작 가이드
+# CLAUDE.md: Developer Project Getting-Started Guide
 
-**한국어 | [English](CLAUDE.en.md)**
-
----
-
-> **이 파일은 SGD 방법론을 적용하여 중소규모 프로젝트를 한정된 토큰 환경에서 세션 단절 없이 개발하는 방법을 설명하는 가이드입니다.**
+**English | [한국어](CLAUDE.ko.md)**
 
 ---
 
-## 이 프로젝트에 대해
+> **This guide explains how to apply the SGD methodology to develop small-to-medium projects in limited token environments without session disconnection.**
 
-### 프로젝트명
-**AWS Guardian**: AWS 계정을 자동으로 감시하고 위협 탐지 시 자동으로 대응하는 서버리스 보안/비용 감시 시스템
+---
+
+## About This Project
+
+### Project Name
+**AWS Guardian**: A serverless security and cost monitoring system that automatically watches AWS accounts and responds when threats are detected.
 https://github.com/jinyounghwa/backend_loader
 
-### 규모
-- **테스트**: ~438개 테스트 함수
-- **코드**: ~41,000줄 (Lambda 8,600줄 + Frontend 8,900줄 + 테스트 9,200줄 + 인프라)
-- **Sprint**: 32+ Sprint 진행 (25개 계획서, 22개 완료 보고서)
-- **개발 방식**: **SGD (Sprint-Guided Development)**
+### Scale
+- **Tests**: ~438 test functions
+- **Code**: ~41,000 lines (Lambda 8,600 + Frontend 8,900 + Tests 9,200 + Infra)
+- **Sprints**: 32+ Sprints (25 plans, 22 completion reports)
+- **Methodology**: **SGD (Sprint-Guided Development)**
 
-### 왜 이 프로젝트를 봐야 하는가?
-1. **중소규모 프로젝트를 1인 개발자가 관리** — 한정된 토큰으로도 완성 가능
-2. **AI와의 협업** (Claude) — 세션 단절 없이 개발하는 실전 방법
-3. **완전한 문서화** — 3개 문서만으로 프로젝트 전체를 추적
-4. **검증된 방법론** — ~438개 테스트로 증명된 품질 관리
+### Why Should You Look at This Project?
+1. **Solo developer managing a small-to-medium project** — achievable with limited tokens
+2. **AI collaboration** (Claude) — practical methods for development without session disconnection
+3. **Complete documentation** — track the entire project with just 3 documents
+4. **Validated methodology** — quality management proven with ~438 tests
 
 ---
 
-## 🎯 SGD의 목적
+## 🎯 Purpose of SGD
 
-### 왜 SGD가 필요한가?
+### Why Do You Need SGD?
 
-**문제 상황:**
+**The Problem:**
 ```
-AI(Claude/GPT)와 협업할 때:
-  1. 토큰 제한 (200K) → 긴 세션에서 컨텍스트 압축
-  2. 세션 단절 → 이전 결정사항 상실
-  3. 복잡한 도구 없이 개발하고 싶음
-```
-
-**SGD의 해결:**
-```
-3개 문서 (CLAUDE.md, SKILL.md, SPRINT_XX_PLAN.md)만 있으면
-  → 세션 끊겨도 1분 안에 복구
-  → 복잡한 하네스/메모리 시스템 불필요
-  → 적은 토큰으로도 프로젝트 완성 가능
+When collaborating with AI (Claude/GPT):
+  1. Token limit (200K) → Context compression in long sessions
+  2. Session disconnection → Previous decisions lost
+  3. Want to develop without complex tools
 ```
 
-### Agentic/Harness 방식과의 비교
+**SGD's Solution:**
+```
+Just 3 documents (CLAUDE.md, SKILL.md, SPRINT_XX_PLAN.md)
+  → Recover in 1 minute even after session disconnects
+  → No complex harness/memory system needed
+  → Complete projects with minimal tokens
+```
 
-| 항목 | Agentic Development | SGD |
+### Comparison with Agentic/Harness Approach
+
+| Item | Agentic Development | SGD |
 |------|-------------------|-----|
-| **도구** | Claude + Gemini CLI + Memory 시스템 | Claude 단독 + 문서 3개 |
-| **메모리** | `.claude/projects/memory/` 다수 파일 | CLAUDE.md, SKILL.md |
-| **리뷰** | Gemini CLI로 코드 리뷰 | 테스트로 자가 검증 |
-| **복잡도** | 높음 (양방향 협업 스크립트) | 낮음 (계획→구현→테스트→커밋) |
-| **토큰 소모** | 많음 (Gemini 호출 + 메모리 읽기) | 적음 (문서 3개만 읽기) |
-| **세션 복구** | Memory 시스템에서 검색 | SKILL.md + git log로 1분 복구 |
-| **적합 규모** | 대규모 + 장기 프로젝트 | **중소규모 + 제한된 토큰** |
+| **Tools** | Claude + Gemini CLI + Memory system | Claude alone + 3 documents |
+| **Memory** | `.claude/projects/memory/` multiple files | CLAUDE.md, SKILL.md |
+| **Review** | Code review via Gemini CLI | Self-verification via tests |
+| **Complexity** | High (bidirectional collaboration scripts) | Low (plan → implement → test → commit) |
+| **Token Cost** | High (Gemini calls + memory reads) | Low (read only 3 documents) |
+| **Session Recovery** | Search through Memory system | 1-minute recovery via SKILL.md + git log |
+| **Best For** | Large + long-term projects | **Small-to-medium + limited tokens** |
 
-> 💡 **핵심**: Agentic 방식은 강력하지만 설정이 복잡하고 토큰 소모가 많습니다.
-> SGD는 **더 적은 도구로 더 빠르게** 개발하는 데 초점을 맞춥니다.
+> 💡 **Key Insight**: The Agentic approach is powerful but requires complex setup and high token consumption.
+> SGD focuses on **developing faster with fewer tools**.
 
 ---
 
-## 🚀 당신의 프로젝트 시작하기
+## 🚀 Starting Your Own Project
 
-### Step 1: 프로젝트 분해 (1시간)
+### Step 1: Project Decomposition (1 hour)
 
-**큰 기능을 Sprint로 나누기:**
+**Breaking big features into Sprints:**
 
 ```
-당신의 아이디어
+Your Idea
     ↓
-전체 기능 목록 (5-10개)
+Full Feature List (5-10 items)
     ↓
-Sprint 분해 (3-5개 기능/Sprint)
+Sprint Decomposition (3-5 features/Sprint)
     ↓
-Phase 분해 (3-5개 단계/Sprint)
+Phase Decomposition (3-5 steps/Sprint)
     ↓
-구현 준비 완료!
+Ready to Implement!
 ```
 
-**AWS Guardian의 예시:**
+**AWS Guardian Example:**
 ```
-전체: "AWS 계정 자동 감시 시스템"
-  ├─ Sprint 1-5: 기반 구축 (Lambda, DynamoDB, Telegram)
-  ├─ Sprint 6-10: 기능 확장 (CloudTrail, GuardDuty, Discord)
-  ├─ Sprint 11-20: 고급 기능 (멀티 리전, 자동 대응, 분석)
-  └─ Sprint 21-32: 품질 & 최적화 (리팩토링, E2E 테스트, 배포)
-```
-
-### Step 2: 첫 Sprint 계획하기 (1시간)
-
-SPRINT_TEMPLATE.md를 복사하여 **SPRINT_01_PLAN.md** 생성:
-
-```
-# Sprint 1: [당신의 첫 기능]
-
-## 현황
-- 이전 프로젝트: 없음 (신규)
-- 누적: 0 tests
-
-## 목표
-- Phase 1: [기능 A] (10 tests)
-- Phase 2: [기능 B] (8 tests)
-- Phase 3: [기능 C] (6 tests)
-
-## 파일 목록
-| 파일 | 설명 |
-|------|------|
-| src/core.py | 핵심 로직 |
-| tests/test_core.py | 테스트 |
+Overall: "AWS Account Auto-Monitoring System"
+  ├─ Sprint 1-5: Foundation (Lambda, DynamoDB, Telegram)
+  ├─ Sprint 6-10: Feature Expansion (CloudTrail, GuardDuty, Discord)
+  ├─ Sprint 11-20: Advanced Features (Multi-region, Auto-response, Analytics)
+  └─ Sprint 21-32: Quality & Optimization (Refactoring, E2E tests, Deployment)
 ```
 
-### Step 3: 첫 Phase 구현하기 (2-3시간)
+### Step 2: Plan Your First Sprint (1 hour)
 
-**Phase 1의 사이클:**
+Copy SPRINT_TEMPLATE.md and create **SPRINT_01_PLAN.md**:
 
 ```
-1. 핵심 클래스/함수 구현 (~30분)
-   └─ 최소 기능만 (완벽할 필요 없음)
+# Sprint 1: [Your First Feature]
 
-2. 포괄적 테스트 작성 (~1시간)
-   └─ 정상 경로 + 엣지 케이스
-   └─ 예: test_core_basic, test_core_with_edge_case
+## Current Status
+- Previous project: none (new)
+- Cumulative: 0 tests
 
-3. 모든 테스트 PASS 확인 (~10분)
+## Goals
+- Phase 1: [Feature A] (10 tests)
+- Phase 2: [Feature B] (8 tests)
+- Phase 3: [Feature C] (6 tests)
+
+## File List
+| File | Description |
+|------|-------------|
+| src/core.py | Core logic |
+| tests/test_core.py | Tests |
+```
+
+### Step 3: Implement Your First Phase (2-3 hours)
+
+**Phase 1 Cycle:**
+
+```
+1. Implement core classes/functions (~30 min)
+   └─ Minimal functionality only (doesn't need to be perfect)
+
+2. Write comprehensive tests (~1 hour)
+   └─ Happy path + edge cases
+   └─ e.g., test_core_basic, test_core_with_edge_case
+
+3. Verify all tests PASS (~10 min)
    └─ pytest tests/ -v ✅
 
-4. Git Commit (~5분)
-   └─ feat: Sprint 1 Phase 1 - [기능] (10 tests)
+4. Git Commit (~5 min)
+   └─ feat: Sprint 1 Phase 1 - [Feature] (10 tests)
 
-Result: 첫 체크포인트 완성! ✅
+Result: First checkpoint complete! ✅
 ```
 
 ---
 
-## 📁 프로젝트 구조 (참고)
+## 📁 Project Structure (Reference)
 
-### SGD 문서 구조
+### SGD Document Structure
 
 ```
 project-root/
-├── SGD/                           # 방법론 문서 (반드시 포함!)
-│   ├── README.md                  # 방법론 설명
-│   ├── CLAUDE.md                  # 이 파일
-│   ├── SKILL.md                   # 진행률 추적
-│   └── SPRINT_TEMPLATE.md         # 계획 템플릿
+├── SGD/                           # Methodology docs (must include!)
+│   ├── README.md                  # Methodology explanation
+│   ├── CLAUDE.md                  # This file
+│   ├── SKILL.md                   # Progress tracking
+│   └── SPRINT_TEMPLATE.md         # Planning template
 │
-├── src/                           # 핵심 구현 (언어/프레임워크 자유)
-├── tests/                         # 테스트 (매우 중요!)
-├── SPRINT_01_PLAN.md              # 첫 Sprint 계획
-├── SPRINT_02_PLAN.md              # 두 번째 Sprint 계획
-└── README.md                      # 프로젝트 README
+├── src/                           # Core implementation (language/framework free)
+├── tests/                         # Tests (very important!)
+├── SPRINT_01_PLAN.md              # First Sprint plan
+├── SPRINT_02_PLAN.md              # Second Sprint plan
+└── README.md                      # Project README
 ```
 
-### AWS Guardian 디렉토리 구조 (실제 예시)
+### AWS Guardian Directory Structure (Actual Example)
 
 ```
 backend_loader/
-├── lambda/guardian/               # Lambda 함수 (~8,600줄, 55파일)
-│   ├── checkers/                  # 보안 검사 (EC2, S3, IAM, Cost...)
-│   ├── responders/                # 자동 대응 (Telegram, Discord...)
-│   ├── storage/                   # 데이터 저장 (DynamoDB)
-│   ├── analytics/                 # 분석 (비용, 최적화)
-│   └── handlers/                  # 엔트리 포인트
+├── lambda/guardian/               # Lambda functions (~8,600 lines, 55 files)
+│   ├── checkers/                  # Security checks (EC2, S3, IAM, Cost...)
+│   ├── responders/                # Auto-response (Telegram, Discord...)
+│   ├── storage/                   # Data storage (DynamoDB)
+│   ├── analytics/                 # Analytics (cost, optimization)
+│   └── handlers/                  # Entry points
 │
-├── apps/web/                      # Next.js 대시보드 (~8,900줄, 84파일)
-│   ├── src/components/Dashboard/  # UI 컴포넌트
-│   └── src/app/api/               # API 라우트
+├── apps/web/                      # Next.js dashboard (~8,900 lines, 84 files)
+│   ├── src/components/Dashboard/  # UI components
+│   └── src/app/api/               # API routes
 │
-├── tests/                         # 테스트 (~9,200줄, 42파일, ~438 tests)
-│   ├── lambda/                    # Lambda 테스트 (harness, contract, performance)
-│   ├── guardian/                  # 통합 테스트
-│   └── cloudformation/            # 인프라 테스트
+├── tests/                         # Tests (~9,200 lines, 42 files, ~438 tests)
+│   ├── lambda/                    # Lambda tests (harness, contract, performance)
+│   ├── guardian/                  # Integration tests
+│   └── cloudformation/            # Infrastructure tests
 │
-├── terraform/                     # IaC (~923줄)
-├── docs/sprints/                  # Sprint 문서 (54개)
-└── sam/                           # 배포 설정
+├── terraform/                     # IaC (~923 lines)
+├── docs/sprints/                  # Sprint documents (54 files)
+└── sam/                           # Deployment config
 ```
 
 ---
 
-## 🧪 테스트 중심 개발 (핵심!)
+## 🧪 Test-Centric Development (Core!)
 
-### 왜 테스트가 중요한가?
+### Why Are Tests Important?
 
-**SGD의 핵심: "모든 테스트 PASS" = 안전한 체크포인트**
+**SGD Core: "All tests PASS" = Safe Checkpoint**
 
 ```
-❌ Vibe Coding (위험)
-부분 구현 → 불명확한 상태 → 나중에 버그 수정
+❌ Vibe Coding (Risky)
+Partial implementation → Unclear state → Bug fixes later
 
-✅ SGD (안전)
-Phase 1 (10 tests) → 모두 PASS → Git Commit ✅
-Phase 2 (8 tests) → 모두 PASS → Git Commit ✅
-Phase 3 (6 tests) → 모두 PASS → Git Commit ✅
+✅ SGD (Safe)
+Phase 1 (10 tests) → All PASS → Git Commit ✅
+Phase 2 (8 tests) → All PASS → Git Commit ✅
+Phase 3 (6 tests) → All PASS → Git Commit ✅
 ```
 
-### 테스트 작성 예시 (Python)
+### Test Writing Example (Python)
 
 ```python
 # tests/test_feature.py
 def test_feature_basic():
-    """기본 기능 테스트"""
+    """Basic feature test"""
     result = feature.execute()
     assert result is not None
     assert len(result) > 0
 
 def test_feature_with_invalid_input():
-    """잘못된 입력 처리"""
+    """Invalid input handling"""
     with pytest.raises(ValueError):
         feature.execute(invalid_param=True)
 
 def test_feature_performance():
-    """성능 테스트"""
+    """Performance test"""
     import time
     start = time.time()
     feature.execute()
     elapsed = time.time() - start
-    assert elapsed < 1.0  # 1초 이내
+    assert elapsed < 1.0  # Under 1 second
 ```
 
-### 테스트 실행 & 확인
+### Running & Verifying Tests
 
 ```bash
-# 모든 테스트 실행
+# Run all tests
 pytest tests/ -v
 
-# 특정 파일만 테스트
+# Run specific file only
 pytest tests/test_feature.py -v
 
-# 결과 예시
+# Example result
 tests/test_feature.py::test_feature_basic PASSED [33%]
 tests/test_feature.py::test_feature_with_invalid_input PASSED [66%]
 tests/test_feature.py::test_feature_performance PASSED [100%]
@@ -243,146 +243,146 @@ tests/test_feature.py::test_feature_performance PASSED [100%]
 
 ---
 
-## 📋 필수 문서 3가지
+## 📋 Three Essential Documents
 
-### 1. 이 파일 (CLAUDE.md): 프로젝트 개요
-- 프로젝트가 뭔지 설명
-- 개발자가 시작하는 방법
-- 아키텍처 개요
+### 1. This File (CLAUDE.md): Project Overview
+- What the project is
+- How developers can get started
+- Architecture overview
 
-### 2. SKILL.md: 진행률 추적
-- Sprint별 상태 (✅ 완료 / 🔄 진행 / ⏳ 예정)
-- 누적 테스트 수
-- 타임라인 및 마일스톤
+### 2. SKILL.md: Progress Tracking
+- Sprint-by-sprint status (✅ Complete / 🔄 In Progress / ⏳ Planned)
+- Cumulative test count
+- Timeline and milestones
 
-### 3. SPRINT_XX_PLAN.md: 각 Sprint의 상세 계획
-- Phase별 구현 파일
-- 테스트 전략
-- 예상 문제 & 해결책
+### 3. SPRINT_XX_PLAN.md: Detailed Plan per Sprint
+- Implementation files per Phase
+- Test strategy
+- Expected issues & solutions
 
-**이 3가지 문서만 있으면 1인 개발자도 중소규모 프로젝트를 세션 단절 없이 관리 가능!**
+**With just these 3 documents, even a solo developer can manage a small-to-medium project without session disconnection!**
 
 ---
 
-## 💡 AWS Guardian으로 배우는 실전 사례
+## 💡 Learning from the AWS Guardian Case Study
 
-### 실제 진행 과정
+### Actual Progress
 
-**AWS Guardian은 32+ Sprint에 걸쳐 ~41,000줄 코드를 ~438개 테스트로 검증했습니다.**
+**AWS Guardian completed ~41,000 lines of code validated with ~438 tests across 32+ Sprints.**
 
 ```
-Sprint 1-5: 기반 구축 (~5시간)
-  └─ Lambda 핸들러 + DynamoDB + Telegram 알림
+Sprint 1-5: Foundation (~5 hours)
+  └─ Lambda handlers + DynamoDB + Telegram alerts
 
-Sprint 6-15: 기능 확장 (~15시간)
-  └─ EC2/S3/IAM/Cost 체커 + Discord 대시보드 + 자동 대응
+Sprint 6-15: Feature Expansion (~15 hours)
+  └─ EC2/S3/IAM/Cost checkers + Discord dashboard + Auto-response
 
-Sprint 16-25: 고급 기능 (~12시간)
-  └─ 멀티 리전 + 병렬 오케스트레이터 + ML 이상 탐지 + WebSocket
+Sprint 16-25: Advanced Features (~12 hours)
+  └─ Multi-region + Parallel orchestrator + ML anomaly detection + WebSocket
 
-Sprint 26-32: 품질 & 배포 (~8시간)
-  └─ 리팩토링 + E2E 테스트 + 성능 최적화 + LocalStack 배포
+Sprint 26-32: Quality & Deployment (~8 hours)
+  └─ Refactoring + E2E tests + Performance optimization + LocalStack deployment
 ```
 
-### 세션 단절 시나리오
+### Session Disconnection Scenario
 
-**상황: Phase 3 중간에 Claude와의 세션이 끊김**
+**Situation: Claude session disconnects during Phase 3**
 
 ```
-[해결 방법]
+[Solution]
 
-1. SKILL.md 읽기 (30초)
-   "Sprint 28 Phase 1-2 완료, 380 tests 통과"
+1. Read SKILL.md (30 seconds)
+   "Sprint 28 Phase 1-2 complete, 380 tests passed"
 
-2. git log 확인 (10초)
-   "마지막 commit: Sprint 28 Phase 2"
+2. Check git log (10 seconds)
+   "Last commit: Sprint 28 Phase 2"
 
-3. SPRINT_28_PLAN.md에서 Phase 3 찾기 (1분)
-   "Phase 3 목표: E2E 테스트 + 성능 베이스라인 (12 tests)"
+3. Find Phase 3 in SPRINT_28_PLAN.md (1 minute)
+   "Phase 3 target: E2E tests + performance baseline (12 tests)"
 
-4. Phase 3 구현 재개 가능! ✅
+4. Resume Phase 3 implementation! ✅
 ```
 
-> 💡 **Agentic 방식이라면?** `.claude/projects/memory/`에서 관련 메모리 파일을 검색해야 합니다.
-> SGD는 **SKILL.md 1개 파일**에서 모든 컨텍스트를 파악할 수 있습니다.
+> 💡 **With the Agentic approach?** You'd need to search through `.claude/projects/memory/` for relevant memory files.
+> SGD provides all context in **a single SKILL.md file**.
 
 ---
 
-## 🎯 당신이 따를 체크리스트
+## 🎯 Checklist to Follow
 
-### ✅ 프로젝트 시작 전
-- [ ] SGD 폴더 생성 (README.md, CLAUDE.md, SKILL.md, SPRINT_TEMPLATE.md)
-- [ ] 첫 Sprint 계획 (SPRINT_01_PLAN.md)
-- [ ] 기본 프로젝트 구조 생성 (src/, tests/)
+### ✅ Before Starting a Project
+- [ ] Create SGD folder (README.md, CLAUDE.md, SKILL.md, SPRINT_TEMPLATE.md)
+- [ ] Plan first Sprint (SPRINT_01_PLAN.md)
+- [ ] Create basic project structure (src/, tests/)
 
-### ✅ 각 Phase마다
-- [ ] 핵심 클래스 구현 (30분)
-- [ ] 포괄적 테스트 작성 (1시간)
-- [ ] 모든 테스트 PASS 확인 (10분)
-- [ ] Git commit (5분)
+### ✅ Each Phase
+- [ ] Implement core classes (30 min)
+- [ ] Write comprehensive tests (1 hour)
+- [ ] Verify all tests PASS (10 min)
+- [ ] Git commit (5 min)
 
-### ✅ 각 Sprint 완료 후
-- [ ] SKILL.md에서 진행률 업데이트
-- [ ] git log로 모든 commits 확인
-- [ ] 다음 Sprint 계획 검토
-
----
-
-## 🔧 기술 스택 선택 (자유로움!)
-
-AWS Guardian은 다음을 사용하지만, **당신의 프로젝트에 맞게 선택하세요:**
-
-| 레이어 | AWS Guardian | 당신의 선택 |
-|--------|--------------|-----------|
-| **언어** | Python 3.12 | 자유 (Java, Go, Rust...) |
-| **테스트** | pytest | 자유 (unittest, JUnit...) |
-| **배포** | AWS Lambda + SAM | 자유 (Docker, Kubernetes...) |
-| **데이터** | DynamoDB | 자유 (PostgreSQL, MongoDB...) |
-
-**중요:** 방법론(SGD)은 변하지 않음! 구현만 바뀝니다.
+### ✅ After Each Sprint Completion
+- [ ] Update progress in SKILL.md
+- [ ] Check all commits with git log
+- [ ] Review next Sprint plan
 
 ---
 
-## 📚 다음 단계
+## 🔧 Tech Stack Selection (Flexible!)
 
-1. **이 파일 읽기 완료** ✅
-2. **README.md 읽기** - SGD 방법론 이해
-3. **SKILL.md 읽기** - 진행 방식 이해
-4. **SPRINT_TEMPLATE.md 복사** - 첫 Sprint 계획
-5. **Phase 1 구현 시작** - 코드 작성!
+AWS Guardian uses the following, but **choose what fits your project:**
 
----
+| Layer | AWS Guardian | Your Choice |
+|-------|--------------|-------------|
+| **Language** | Python 3.12 | Free (Java, Go, Rust...) |
+| **Testing** | pytest | Free (unittest, JUnit...) |
+| **Deployment** | AWS Lambda + SAM | Free (Docker, Kubernetes...) |
+| **Data** | DynamoDB | Free (PostgreSQL, MongoDB...) |
 
-## 🆘 문제 발생했을 때
-
-### "Phase 1을 어떻게 시작하나요?"
-→ SPRINT_TEMPLATE.md의 "구현 전략" 섹션 참고
-
-### "테스트를 몇 개 작성해야 하나요?"
-→ 규칙: 기능 1개당 1-3개 테스트
-  (간단한 기능: 1개, 복잡한 기능: 3-5개)
-
-### "AI(Claude)와 협업할 때 어떻게 하나요?"
-→ README.md에서 "1인 개발자를 위한 실전 예시" 참고
-
-### "Agentic 방식과 SGD 중 뭘 쓰나요?"
-→ 중소규모 + 제한된 토큰 → **SGD** (간단, 적은 토큰)
-→ 대규모 + 장기 + 다중 AI → Agentic (강력, 복잡)
+**Important:** The methodology (SGD) doesn't change! Only the implementation differs.
 
 ---
 
-## 📞 연락처 & 참고
+## 📚 Next Steps
 
-- **방법론**: README.md (완전한 설명)
-- **진행률**: SKILL.md (현재 상태)
-- **계획**: SPRINT_XX_PLAN.md (각 Sprint)
-- **원본 프로젝트**: AWS Guardian https://github.com/jinyounghwa/backend_loader
+1. **Reading this file complete** ✅
+2. **Read README.md** — Understand SGD methodology
+3. **Read SKILL.md** — Understand progress tracking
+4. **Copy SPRINT_TEMPLATE.md** — Plan first Sprint
+5. **Start Phase 1 implementation** — Write code!
 
 ---
 
-**SGD: 적은 토큰으로, 세션 단절 없이, 중소규모 프로젝트를 완성하세요.** 💪
+## 🆘 Troubleshooting
+
+### "How do I start Phase 1?"
+→ See the "Implementation Strategy" section in SPRINT_TEMPLATE.md
+
+### "How many tests should I write?"
+→ Rule: 1-3 tests per feature
+  (Simple feature: 1, Complex feature: 3-5)
+
+### "How do I collaborate with AI (Claude)?"
+→ See "Real-world Example for Solo Developers" in README.md
+
+### "Should I use Agentic or SGD?"
+→ Small-to-medium + limited tokens → **SGD** (simple, low token cost)
+→ Large + long-term + multi-AI → Agentic (powerful, complex)
+
+---
+
+## 📞 References
+
+- **Methodology**: README.md (full explanation)
+- **Progress**: SKILL.md (current status)
+- **Plans**: SPRINT_XX_PLAN.md (per Sprint)
+- **Original Project**: AWS Guardian https://github.com/jinyounghwa/backend_loader
+
+---
+
+**SGD: Complete small-to-medium projects with minimal tokens, without session disconnection.** 💪
 
 ---
 
 **Last Updated:** 2026-05-24  
-**Version:** 2.0 - 개발자 시작 가이드
+**Version:** 2.0 - Developer Getting-Started Guide
