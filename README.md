@@ -92,6 +92,37 @@ You review and adjust. Then start implementing.
 > 💡 This is how AWS Guardian was built — Claude generated sprint plans
 > based on CLAUDE.md + SKILL.md + git log, and the developer reviewed them.
 
+### Three-Step Sprint Workflow (Claude Code Memory)
+
+When using **Claude Code** (or similar AI coding agents with memory),
+each sprint follows this proven three-step cycle:
+
+```
+1. SPRINT_XX_PLAN.md       →  구현 전 상세 설계
+2. Implement               →  서비스, 핸들러, 테스트 작성
+3. SPRINT_XX_COMPLETION.md →  테스트 결과, 아키텍처, 메트릭
+```
+
+**Why three steps?**
+
+| Step | Document | Purpose |
+|------|----------|----------|
+| **Plan** | `SPRINT_XX_PLAN.md` | Define what to build *before* coding. Prevents scope creep. |
+| **Implement** | (code + tests) | Build it. Tests verify each phase. |
+| **Completion** | `SPRINT_XX_COMPLETION.md` | Record what actually happened. Feeds into AI memory for the next sprint. |
+
+The completion report is especially powerful with AI agents — it gives the AI
+a clear record of test results, architecture decisions, and metrics, so the
+next sprint plan is better informed.
+
+> 💡 **Claude Code Memory Tip:** Add this three-step workflow to your
+> `CLAUDE.md` so the AI agent follows it automatically:
+> ```
+> 1. SPRINT_XX_PLAN.md 작성 (구현 전 상세 설계)
+> 2. 구현 (서비스, 핸들러, 테스트 작성)
+> 3. SPRINT_XX_COMPLETION.md 작성 (테스트 결과, 아키텍처, 메트릭)
+> ```
+
 ### Sprint Plan Example
 
 ```markdown
@@ -154,7 +185,7 @@ SGD sits in a practical middle ground: **more structure than vibe coding, less o
 
 ## Document Structure
 
-Three required documents:
+Four documents per sprint:
 
 ### 1. `CLAUDE.md` — Project Overview
 What you're building. Tech stack, architecture, directory structure.
@@ -164,28 +195,46 @@ Without this, you can't plan sprints because you don't know what you're building
 Where you are right now. Cumulative tests, sprint history, current phase.
 Without this, you can't plan the next sprint because you don't know where you are.
 
-### 3. `SPRINT_XX_PLAN.md` — Current Sprint Plan
+### 3. `SPRINT_XX_PLAN.md` — Sprint Plan (Step 1)
 What you're doing this sprint. Phase breakdown, file list, test targets.
 Created from [SPRINT_TEMPLATE.md](SPRINT_TEMPLATE.md).
+Write this **before** implementation.
+
+### 4. `SPRINT_XX_COMPLETION.md` — Sprint Completion Report (Step 3)
+What actually happened. Test results, architecture decisions, metrics.
+Write this **after** implementation is complete.
 
 ### Flow
 ```
 CLAUDE.md (what to build)
     → SKILL.md (where we are)
-        → SPRINT_XX_PLAN.md (what to do next)
-            → Implement → Test → Commit
-                → Update SKILL.md
-                    → Plan next sprint (manual or AI-generated)
+        → SPRINT_XX_PLAN.md (what to do next)           ← Step 1
+            → Implement → Test → Commit                  ← Step 2
+                → SPRINT_XX_COMPLETION.md (what happened) ← Step 3
+                    → Update SKILL.md
+                        → Plan next sprint (manual or AI-generated)
 ```
 
 ### AI Sprint Generation
 
-CLAUDE.md + SKILL.md serve a dual purpose:
+CLAUDE.md + SKILL.md + previous COMPLETION reports serve a dual purpose:
 1. **You** read them to understand the project state
 2. **AI** reads them to generate the next sprint plan
 
-Without both documents, the AI can't generate meaningful sprint plans.
+Without these documents, the AI can't generate meaningful sprint plans.
 This is why they're required, not optional.
+
+### Completion Report Benefits
+
+`SPRINT_XX_COMPLETION.md` is not just documentation — it's **AI memory**:
+
+- **Test results** → AI knows exactly what was verified
+- **Architecture decisions** → AI understands why code is structured this way
+- **Metrics** → AI can track velocity and plan better estimates
+- **Issues encountered** → AI avoids repeating the same mistakes
+
+This is the key advantage of the three-step workflow: each sprint's completion
+report makes the AI's next sprint plan more accurate and informed.
 
 ---
 
@@ -242,5 +291,5 @@ No frameworks to install. No tools to configure. Just:
 
 ---
 
-**Last Updated:** 2026-05-24  
-**Version:** 3.0
+**Last Updated:** 2026-05-26  
+**Version:** 4.0

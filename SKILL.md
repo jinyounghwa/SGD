@@ -57,6 +57,14 @@
 3. Add milestone entry
 4. Commit: `git commit -m "docs: SKILL.md - Sprint X Phase Y (N tests)"`
 
+**After Sprint Complete:**
+1. Write `SPRINT_XX_COMPLETION.md` (test results, architecture, metrics)
+2. Update SKILL.md with final results
+3. Commit: `git commit -m "docs: Sprint X complete - COMPLETION.md + SKILL.md"`
+
+> 💡 **Claude Code Memory:** `SPRINT_XX_COMPLETION.md` serves as AI memory.
+> The AI references previous completion reports when planning the next sprint, resulting in more accurate plans.
+
 ---
 
-**Last Updated:** 2026-05-24
+**Last Updated:** 2026-05-26

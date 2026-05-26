@@ -122,7 +122,53 @@ Cumulative: [prev] + [new] = [total] tests
 - [ ] All phases done
 - [ ] All tests passing
 - [ ] [SKILL.md](SKILL.md) updated with results
+- [ ] **`SPRINT_XX_COMPLETION.md` written** (test results, architecture, metrics)
 - [ ] Next sprint planned (if needed)
+
+---
+
+## Completion Report Template
+
+> After all phases are complete, create `SPRINT_XX_COMPLETION.md` using this template.
+> This serves as AI memory for future sprint planning.
+
+```markdown
+# Sprint [NUMBER] Completion Report
+
+## Summary
+- **Sprint**: [NUMBER] - [Title]
+- **Status**: ✅ Complete
+- **Duration**: [start date] ~ [end date]
+
+## Test Results
+| Phase | Feature | Planned | Actual | Status |
+|-------|---------|---------|--------|--------|
+| 1 | [Feature] | NN | NN | ✅ |
+| 2 | [Feature] | MM | MM | ✅ |
+| **Total** | | **NN+MM** | **NN+MM** | ✅ |
+
+## Architecture Decisions
+| Decision | Reason | Alternative Considered |
+|----------|--------|----------------------|
+| [Decision] | [Why] | [What else was considered] |
+
+## Metrics
+- **Tests added**: [N]
+- **Cumulative tests**: [total]
+- **Files created**: [N]
+- **Files modified**: [N]
+- **Lines added**: ~[N]
+
+## Issues & Lessons Learned
+- [Issue encountered and how it was resolved]
+
+## Files Changed
+### Created
+- `path/to/new_file.py`
+
+### Modified
+- `path/to/existing_file.py`
+```
 
 ---
 
@@ -134,5 +180,5 @@ Cumulative: [prev] + [new] = [total] tests
 
 ---
 
-**Template Version:** 3.0  
-**Last Updated:** 2026-05-24
+**Template Version:** 4.0  
+**Last Updated:** 2026-05-26

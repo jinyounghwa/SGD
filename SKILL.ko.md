@@ -57,6 +57,14 @@
 3. 마일스톤 항목 추가
 4. 커밋: `git commit -m "docs: SKILL.md - Sprint X Phase Y (N tests)"`
 
+**Sprint 완료 후:**
+1. `SPRINT_XX_COMPLETION.md` 작성 (테스트 결과, 아키텍처, 메트릭)
+2. SKILL.md에 최종 결과 업데이트
+3. 커밋: `git commit -m "docs: Sprint X complete - COMPLETION.md + SKILL.md"`
+
+> 💡 **Claude Code Memory:** `SPRINT_XX_COMPLETION.md`는 AI의 메모리 역할을 합니다.
+> 다음 Sprint 계획 시 AI가 이전 완료 보고서를 참조하여 더 정확한 계획을 세웁니다.
+
 ---
 
-**Last Updated:** 2026-05-24
+**Last Updated:** 2026-05-26
